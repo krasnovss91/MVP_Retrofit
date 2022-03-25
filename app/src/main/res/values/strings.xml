@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MVP_Retrofit</string>
+    <string name="try_again">Повторить</string>
 </resources>
