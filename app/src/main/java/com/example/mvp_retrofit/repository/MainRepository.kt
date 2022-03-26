@@ -9,12 +9,12 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 
 class MainRepository : Contract.Repository{
-    override fun load(): MutableList<Activity> {
+    override fun load(): MutableList<Activity> {//идём в сеть здесь. Ловим объекты и кладём в список
         TODO("Not yet implemented")
     }
 
     override fun reload() {
-        TODO("Not yet implemented")
+        load()
     }
 
     object NetworkModule{
@@ -30,5 +30,9 @@ class MainRepository : Contract.Repository{
             .addConverterFactory(MoshiConverterFactory.create())
             .client(client)
             .build()
+    }
+
+    companion object{
+        fun create() = MainRepository()
     }
 }
