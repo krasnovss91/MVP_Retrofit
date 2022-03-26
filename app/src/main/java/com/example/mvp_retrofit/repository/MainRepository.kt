@@ -1,11 +1,13 @@
 package com.example.mvp_retrofit.repository
 
 import com.example.mvp_retrofit.Contract
+import com.example.mvp_retrofit.SimpleApi
 import com.example.mvp_retrofit.entity.Activity
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.create
 import java.util.concurrent.TimeUnit
 
 class MainRepository : Contract.Repository{
@@ -30,6 +32,8 @@ class MainRepository : Contract.Repository{
             .addConverterFactory(MoshiConverterFactory.create())
             .client(client)
             .build()
+
+        val api = retrofit.create<SimpleApi>()
     }
 
     companion object{
