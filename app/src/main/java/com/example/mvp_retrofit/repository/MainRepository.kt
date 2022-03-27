@@ -9,19 +9,30 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
 import java.util.concurrent.TimeUnit
+import kotlin.concurrent.thread
 
-class MainRepository : Contract.Repository{
+class MainRepository : Contract.Repository {
     override fun load(): MutableList<Activity> {//идём в сеть здесь. Ловим объекты и кладём в список
-        TODO("Not yet implemented")
+        thread {
+            val getActivityCall = NetworkModule.api.getActivity()
+
+            val response = getActivityCall.execute()
+            if (response.isSuccessful) {
+
+            }
+            else{
+
+            }
+        }
     }
 
     override fun reload() {
         load()
     }
 
-    object NetworkModule{
+    object NetworkModule {
         private val client = OkHttpClient().newBuilder()
-            .readTimeout(30000,TimeUnit.MILLISECONDS)
+            .readTimeout(30000, TimeUnit.MILLISECONDS)
             .connectTimeout(30000, TimeUnit.MILLISECONDS)
             .writeTimeout(30000, TimeUnit.MILLISECONDS)
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
@@ -36,7 +47,7 @@ class MainRepository : Contract.Repository{
         val api = retrofit.create<SimpleApi>()
     }
 
-    companion object{
+    companion object {
         fun create() = MainRepository()
     }
 }
