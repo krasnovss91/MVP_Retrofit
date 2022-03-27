@@ -12,7 +12,9 @@ import java.util.concurrent.TimeUnit
 import kotlin.concurrent.thread
 
 class MainRepository : Contract.Repository {
-    override fun load(): MutableList<Activity> {//идём в сеть здесь. Ловим объекты и кладём в список
+    override fun load(): MutableList<Activity>? {//идём в сеть здесь. Ловим объекты и кладём в список
+
+        val activityList: MutableList<Activity>? = null
         thread {
             val getActivityCall = NetworkModule.api.getActivity()
 
@@ -24,6 +26,7 @@ class MainRepository : Contract.Repository {
 
             }
         }
+        return activityList
     }
 
     override fun reload() {

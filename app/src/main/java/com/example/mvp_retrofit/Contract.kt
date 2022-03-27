@@ -32,7 +32,7 @@ interface Contract {
 
     interface Repository {
 
-        fun load(): MutableList<Activity>
+        fun load(): MutableList<Activity>?//может случиться, что из сети ничего не прилетит
         fun reload()
 
     }
