@@ -23,7 +23,7 @@ class MainRepository : Contract.Repository {
             if (response.isSuccessful) {
                 val activity = response.body()!!
                 Log.d("ACTIVITY", activity.toString())
-
+                activityList?.add(activity)
             } else {
                 val errorBody = response.errorBody()!!
                 Log.d("ACTIVITY",errorBody.toString())
