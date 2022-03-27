@@ -21,6 +21,8 @@ class MainRepository : Contract.Repository {
 
             val response = getActivityCall.execute()
             if (response.isSuccessful) {
+                val activity = response.body()!!
+                Log.d("ACTIVITY", activity.toString())
 
             } else {
                 val errorBody = response.errorBody()!!
