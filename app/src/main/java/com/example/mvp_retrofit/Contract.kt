@@ -17,7 +17,7 @@ interface Contract {
 
         fun hideContent()
 
-        fun setContent(content: List<ActivityViewState>)
+        fun setContent(content: List<ActivityViewState>?)
 
         fun showContent(show: Boolean)
 

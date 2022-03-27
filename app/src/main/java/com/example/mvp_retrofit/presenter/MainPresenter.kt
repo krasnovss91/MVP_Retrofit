@@ -2,7 +2,6 @@ package com.example.mvp_retrofit.presenter
 
 import com.example.mvp_retrofit.Contract
 import com.example.mvp_retrofit.entity.ActivityViewState
-import com.example.mvp_retrofit.repository.MainRepository
 
 class MainPresenter(
 
@@ -17,8 +16,7 @@ private val repository: Contract.Repository
 
             val activities = repository.load()
 
-            val acivitiesViewState: List<ActivityViewState> = activities.map {
-                activity ->
+            val acivitiesViewState: List<ActivityViewState>? = activities?.map { activity ->
                 ActivityViewState(
                     activity.activity,
                     activity.type,
