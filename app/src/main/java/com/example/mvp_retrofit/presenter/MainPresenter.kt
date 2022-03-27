@@ -1,6 +1,7 @@
 package com.example.mvp_retrofit.presenter
 
 import com.example.mvp_retrofit.Contract
+import com.example.mvp_retrofit.entity.ActivityViewState
 import com.example.mvp_retrofit.repository.MainRepository
 
 class MainPresenter(
@@ -16,41 +17,24 @@ private val repository: Contract.Repository
 
             val activities = repository.load()
 
-
+            val acivitiesViewState: List<ActivityViewState> = activities.map {
+                activity ->
+                ActivityViewState(
+                    activity.activity,
+                    activity.type,
+                    activity.participants,
+                    activity.price,
+                    activity.link,
+                    activity.key,
+                    activity.accessibility
+                )
+            }
 
         } catch (e: Throwable){
           view.showProgress()
           view.showError()
         }
-       /*
-               try {
 
-            view.hideContent()
-
-            view.showProgress()
-
-            val products = repository.load()
-
-            val productsViewState: List<ProductViewState> = products.map { product ->
-                ProductViewState(
-                    product.avatar,
-                    product.name,
-                    product.producer,
-                    product.cost,
-                    product.id,
-                    product.offsetDateTime
-                )
-            }
-            view.setContent(productsViewState)
-            view.hideProgress()
-            view.showContent(true)
-        } catch (e: Throwable) {
-
-            view.showProgress()
-
-            view.showError()
-        }
-        */
     }
 
     override fun reload() {
