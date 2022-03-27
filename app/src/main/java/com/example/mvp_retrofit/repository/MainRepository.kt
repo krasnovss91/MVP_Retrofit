@@ -1,5 +1,6 @@
 package com.example.mvp_retrofit.repository
 
+import android.util.Log
 import com.example.mvp_retrofit.Contract
 import com.example.mvp_retrofit.SimpleApi
 import com.example.mvp_retrofit.entity.Activity
@@ -21,9 +22,9 @@ class MainRepository : Contract.Repository {
             val response = getActivityCall.execute()
             if (response.isSuccessful) {
 
-            }
-            else{
-
+            } else {
+                val errorBody = response.errorBody()!!
+                Log.d("ACTIVITY",errorBody.toString())
             }
         }
         return activityList
