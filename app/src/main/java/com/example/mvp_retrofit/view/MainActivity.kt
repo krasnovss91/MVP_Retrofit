@@ -11,10 +11,11 @@ import com.example.mvp_retrofit.Contract
 import com.example.mvp_retrofit.R
 import com.example.mvp_retrofit.entity.ActivityViewState
 
-class MainActivity : AppCompatActivity(), Contract.Viev {//activity не должно ничего знать о преобразованиях
+class MainActivity : AppCompatActivity(),
+    Contract.Viev {//activity не должно ничего знать о преобразованиях
 
-    lateinit var requestList:RecyclerView
-    lateinit var requestInfo:TextView
+    lateinit var requestList: RecyclerView
+    lateinit var requestInfo: TextView
     lateinit var progress: ProgressBar
     lateinit var errorTitle: TextView
     lateinit var reloadButton: Button

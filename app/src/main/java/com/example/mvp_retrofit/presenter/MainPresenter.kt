@@ -2,6 +2,8 @@ package com.example.mvp_retrofit.presenter
 
 import com.example.mvp_retrofit.Contract
 import com.example.mvp_retrofit.entity.ActivityViewState
+import com.example.mvp_retrofit.repository.MainRepository
+import com.example.mvp_retrofit.view.MainActivity
 
 class MainPresenter(
 
@@ -41,5 +43,11 @@ class MainPresenter(
 
     override fun reload() {
         load()
+    }
+
+    companion object {
+        fun create(mainActivity: MainActivity, mainRepository: MainRepository) {
+            MainPresenter(mainActivity, mainRepository)
+        }
     }
 }

@@ -34,7 +34,7 @@ class MainRepository : Contract.Repository {
                 activityList?.add(activity)
             } else {
                 val errorBody = response.errorBody()!!
-                Log.d("ACTIVITY",errorBody.toString())
+                Log.d("ACTIVITY", errorBody.toString())
             }
         }
         return activityList

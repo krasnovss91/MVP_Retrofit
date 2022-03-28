@@ -2,4 +2,5 @@
     <string name="app_name">MVP_Retrofit</string>
     <string name="try_again">Повторить</string>
     <string name="requset">Отправить запрос</string>
+    <string name="request">Отправить запрос</string>
 </resources>
