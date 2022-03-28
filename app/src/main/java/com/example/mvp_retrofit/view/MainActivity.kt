@@ -1,9 +1,11 @@
 package com.example.mvp_retrofit.view
 
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mvp_retrofit.Contract
 import com.example.mvp_retrofit.R
@@ -15,6 +17,8 @@ class MainActivity : AppCompatActivity(), Contract.Viev {//activity не дол�
     lateinit var requestInfo:TextView
     lateinit var progress: ProgressBar
     lateinit var errorTitle: TextView
+    lateinit var reloadButton: Button
+    lateinit var requestButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {//дёргает методы presenter, все преобразования там
         super.onCreate(savedInstanceState)//в сеть идут методы repository, которые вызывают методы presenter
@@ -22,11 +26,11 @@ class MainActivity : AppCompatActivity(), Contract.Viev {//activity не дол�
     }
 
     override fun showProgress() {
-        TODO("Not yet implemented")
+        progress.isVisible = true
     }
 
     override fun hideProgress() {
-        TODO("Not yet implemented")
+        progress.isVisible = false
     }
 
     override fun showError() {
@@ -50,6 +54,7 @@ class MainActivity : AppCompatActivity(), Contract.Viev {//activity не дол�
     }
 
     override fun showContent(show: Boolean) {
-        TODO("Not yet implemented")
+        errorTitle.isVisible = show
+        reloadButton.isVisible = show
     }
 }
