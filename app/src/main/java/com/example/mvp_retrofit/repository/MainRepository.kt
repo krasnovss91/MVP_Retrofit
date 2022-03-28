@@ -9,11 +9,19 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
+import java.lang.RuntimeException
 import java.util.concurrent.TimeUnit
 import kotlin.concurrent.thread
 
 class MainRepository : Contract.Repository {
     override fun load(): MutableList<Activity>? {//идём в сеть здесь. Ловим объекты и кладём в список
+
+        var i = 2
+
+        if (i % 2 == 0) {
+            i++
+            throw RuntimeException()
+        }
 
         val activityList: MutableList<Activity>? = null
         thread {

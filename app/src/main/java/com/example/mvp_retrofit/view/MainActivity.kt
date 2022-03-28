@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity(), Contract.Viev {//activity не дол�
 
     }
 
-    override fun showContent(show: Boolean) {//добавить похожий метод showError
+    override fun showContent(show: Boolean) {
         requestList.isVisible = show
         requestButton.isVisible = show
     }
