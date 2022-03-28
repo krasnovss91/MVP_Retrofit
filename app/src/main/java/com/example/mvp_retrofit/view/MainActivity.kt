@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mvp_retrofit.Contract
 import com.example.mvp_retrofit.R
 import com.example.mvp_retrofit.entity.ActivityViewState
+import com.example.mvp_retrofit.presenter.MainPresenter
+import com.example.mvp_retrofit.repository.MainRepository
 
 class MainActivity : AppCompatActivity(),
     Contract.Viev {//activity не должно ничего знать о преобразованиях
@@ -20,6 +22,14 @@ class MainActivity : AppCompatActivity(),
     lateinit var errorTitle: TextView
     lateinit var reloadButton: Button
     lateinit var requestButton: Button
+
+    private val repository by lazy {
+       MainRepository.create()
+    }
+
+    private val presenter by lazy {
+        MainPresenter.create(this, repository)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {//дёргает методы presenter, все преобразования там
         super.onCreate(savedInstanceState)//в сеть идут методы repository, которые вызывают методы presenter
@@ -52,7 +62,8 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun setContent(content: List<ActivityViewState>?) {
-
+        showContent(true)
+        //adapter.setProducts(content)
     }
 
     override fun showContent(show: Boolean) {
