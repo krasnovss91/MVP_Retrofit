@@ -34,27 +34,28 @@ class MainActivity : AppCompatActivity(), Contract.Viev {//activity не дол�
     }
 
     override fun showError() {
-        TODO("Not yet implemented")
+        showError(true)
     }
 
     override fun showError(show: Boolean) {
-        TODO("Not yet implemented")
+        errorTitle.isVisible = show
+        reloadButton.isVisible = show
     }
 
     override fun hideError() {
-        TODO("Not yet implemented")
+        showError(false)
     }
 
     override fun hideContent() {
-        TODO("Not yet implemented")
+        showContent(false)
     }
 
     override fun setContent(content: List<ActivityViewState>?) {
-        TODO("Not yet implemented")
+
     }
 
-    override fun showContent(show: Boolean) {
-        errorTitle.isVisible = show
-        reloadButton.isVisible = show
+    override fun showContent(show: Boolean) {//добавить похожий метод showError
+        requestList.isVisible = show
+        requestButton.isVisible = show
     }
 }
