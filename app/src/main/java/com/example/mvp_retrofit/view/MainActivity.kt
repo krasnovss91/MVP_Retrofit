@@ -21,12 +21,12 @@ class MainActivity : AppCompatActivity(),
     private val adapter = RequestAdapter()
 
     lateinit var requestList: RecyclerView
-    lateinit var requestInfo: TextView
+    lateinit var requestInfo: TextView//присваивать только значение поля activity элемента, приехавшего по сети
     lateinit var progress: ProgressBar
     lateinit var errorTitle: TextView
     lateinit var reloadButton: Button
     lateinit var requestButton: Button
-
+//при нажатии на элемент списка открываем полную информацию с помощью bottomSheet
     private val repository by lazy {
        MainRepository.create()
     }
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity(),
         reloadButton = findViewById(R.id.reload)
 
 
-
+//во время запроса скрывать информацию о запросе и показывать спиннер
         requestButton.setOnClickListener {//ходить в сеть по нажатию этой кнопки
 
             presenter.load()

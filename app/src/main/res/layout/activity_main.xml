@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.MainActivity">
-
+<!--LinearLayout, в одной части информация о текущем запросе/спиннер и перезагрузка, в другой список -->
     <!--список предыдущих запросов -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/requestList"
