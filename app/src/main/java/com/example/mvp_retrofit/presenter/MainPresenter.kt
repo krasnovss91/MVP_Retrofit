@@ -7,12 +7,11 @@ import com.example.mvp_retrofit.view.MainActivity
 
 class MainPresenter(
 
-    private val view: Contract.Viev,
+    private val view: Contract.View,
     private val repository: Contract.Repository
 ) : Contract.Presenter {
-    //здесь смапить Activity к ActivityViewState
-    override fun load() {
 
+    override fun load() {
         try {
             view.hideContent()
             view.showProgress()
@@ -38,7 +37,6 @@ class MainPresenter(
             view.showProgress()
             view.showError()
         }
-
     }
 
     override fun reload() {

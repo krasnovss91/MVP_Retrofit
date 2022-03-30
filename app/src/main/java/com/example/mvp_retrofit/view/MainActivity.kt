@@ -38,18 +38,20 @@ class MainActivity : AppCompatActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {//дёргает методы presenter, все преобразования там
         super.onCreate(savedInstanceState)//в сеть идут методы repository, которые вызывают методы presenter
         setContentView(R.layout.activity_main)
+        SetUpViews()
 
         progress = findViewById(R.id.progress)
         errorTitle = findViewById(R.id.errorTitle)
         reloadButton = findViewById(R.id.reload)
 
-        presenter.load()
 
-        requestButton.setOnClickListener {
 
+        requestButton.setOnClickListener {//ходить в сеть по нажатию этой кнопки
+
+            presenter.load()
         }
 
-        reloadButton.setOnClickListener {
+        reloadButton.setOnClickListener {//если произошла ошибка, показать эту кнопку
             presenter.reload()
         }
     }
