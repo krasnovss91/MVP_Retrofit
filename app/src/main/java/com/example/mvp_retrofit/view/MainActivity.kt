@@ -16,7 +16,7 @@ import com.example.mvp_retrofit.repository.MainRepository
 import com.example.mvp_retrofit.view.adapter.RequestAdapter
 
 class MainActivity : AppCompatActivity(),
-    Contract.Viev {//activity не должно ничего знать о преобразованиях
+    Contract.View {//activity не должно ничего знать о преобразованиях
 
     private val adapter = RequestAdapter()
 

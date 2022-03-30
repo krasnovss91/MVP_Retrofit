@@ -5,7 +5,7 @@ import com.example.mvp_retrofit.entity.ActivityViewState
 
 interface Contract {
 
-    interface Viev {
+    interface View {
 
         fun showProgress()
 
