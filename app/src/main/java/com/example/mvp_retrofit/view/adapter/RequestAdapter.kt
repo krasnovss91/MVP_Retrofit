@@ -4,12 +4,14 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mvp_retrofit.entity.ActivityViewState
 
-class RequestAdapter:RecyclerView.Adapter<RequestAdapter.MyViewHolder> {
+class RequestAdapter: RecyclerView.Adapter<RequestAdapter.MyViewHolder>() {
 
     private var requestList = emptyList<ActivityViewState>()
 
     fun setRequests(requestsViewStates: List<ActivityViewState>?){
-        this.requestList = requestsViewStates
+        if (requestsViewStates != null) {
+            this.requestList = requestsViewStates
+        }
         notifyDataSetChanged()
     }
 
