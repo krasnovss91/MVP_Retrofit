@@ -7,6 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mvp_retrofit.R
 import com.example.mvp_retrofit.entity.ActivityViewState
 
+interface OnRequestSelected {
+    fun onSelected(requestViewState: ActivityViewState)
+}
+
 class RequestAdapter : RecyclerView.Adapter<RequestAdapter.MyViewHolder>() {
 
     private var requestList = emptyList<ActivityViewState>()
@@ -19,7 +23,7 @@ class RequestAdapter : RecyclerView.Adapter<RequestAdapter.MyViewHolder>() {
     }
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun setData(activityViewState: ActivityViewState) {
+        fun setData(activityViewState: ActivityViewState) {//заполнить
 
         }
 
