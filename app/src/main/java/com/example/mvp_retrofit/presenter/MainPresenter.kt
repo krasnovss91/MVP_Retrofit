@@ -44,8 +44,8 @@ class MainPresenter(
     }
 
     companion object {
-        fun create(mainActivity: MainActivity, mainRepository: MainRepository) {
-            MainPresenter(mainActivity, mainRepository)
+        fun create(mainActivity: MainActivity, mainRepository: MainRepository):MainPresenter {
+           return MainPresenter(mainActivity, mainRepository)
         }
     }
 }
