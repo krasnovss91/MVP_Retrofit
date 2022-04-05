@@ -29,10 +29,9 @@ class RequestAdapter: RecyclerView.Adapter<RequestAdapter.MyViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        TODO("Not yet implemented")
+       val request =requestList[position]
+        holder.setData(request)
     }
 
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-    }
+    override fun getItemCount(): Int = requestList.size
 }
