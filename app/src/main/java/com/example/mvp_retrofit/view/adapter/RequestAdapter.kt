@@ -1,23 +1,25 @@
 package com.example.mvp_retrofit.view.adapter
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mvp_retrofit.R
 import com.example.mvp_retrofit.entity.ActivityViewState
 
-class RequestAdapter: RecyclerView.Adapter<RequestAdapter.MyViewHolder>() {
+class RequestAdapter : RecyclerView.Adapter<RequestAdapter.MyViewHolder>() {
 
     private var requestList = emptyList<ActivityViewState>()
 
-    fun setRequests(requestsViewStates: List<ActivityViewState>?){
+    fun setRequests(requestsViewStates: List<ActivityViewState>?) {
         if (requestsViewStates != null) {
             this.requestList = requestsViewStates
         }
         notifyDataSetChanged()
     }
 
-    inner class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        fun setData(activityViewState: ActivityViewState){
+    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun setData(activityViewState: ActivityViewState) {
 
         }
 
@@ -25,11 +27,13 @@ class RequestAdapter: RecyclerView.Adapter<RequestAdapter.MyViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        TODO("Not yet implemented")
+        val itemView =
+            LayoutInflater.from(parent.context).inflate(R.layout.request_item, parent, false)
+        return MyViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-       val request =requestList[position]
+        val request = requestList[position]
         holder.setData(request)
     }
 
