@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.MainActivity">
-<!--LinearLayout, в одной части информация о текущем запросе/спиннер и перезагрузка, в другой список -->
-    <!--список предыдущих запросов. -->
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
-<!--Первый LinearLayout -->
+
     <ProgressBar
         android:id="@+id/progress"
         android:layout_width="40dp"
@@ -19,7 +17,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!--информация о текущем запросе -->
     <TextView
         android:id="@+id/requestInfo"
         android:layout_width="wrap_content"
@@ -64,7 +61,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/errorTitle" />
 
-    <!--второй LinearLayout -->
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/requestList"
@@ -73,7 +70,8 @@
         android:orientation="vertical"
         android:visibility="gone"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="requestButton"
         tools:ignore="MissingClass,MissingConstraints" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
