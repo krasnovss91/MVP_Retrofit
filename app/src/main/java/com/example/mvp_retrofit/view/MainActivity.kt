@@ -18,7 +18,7 @@ import com.example.mvp_retrofit.view.adapter.RequestAdapter
 class MainActivity : AppCompatActivity(),
     Contract.View {//activity не должно ничего знать о преобразованиях
 
-    private val adapter = RequestAdapter()
+    private val adapter = RequestAdapter(this.)
 
     lateinit var requestList: RecyclerView
     lateinit var requestInfo: TextView//присваивать только значение поля activity элемента, приехавшего по сети
