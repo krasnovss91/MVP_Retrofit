@@ -13,12 +13,13 @@ import com.example.mvp_retrofit.R
 import com.example.mvp_retrofit.entity.ActivityViewState
 import com.example.mvp_retrofit.presenter.MainPresenter
 import com.example.mvp_retrofit.repository.MainRepository
+import com.example.mvp_retrofit.view.adapter.OnRequestSelected
 import com.example.mvp_retrofit.view.adapter.RequestAdapter
 
 class MainActivity : AppCompatActivity(),
-    Contract.View {//activity не должно ничего знать о преобразованиях
+    Contract.View, OnRequestSelected {//activity не должно ничего знать о преобразованиях
 
-    private val adapter = RequestAdapter(this.)
+    private val adapter = RequestAdapter(this)
 
     lateinit var requestList: RecyclerView
     lateinit var requestInfo: TextView//присваивать только значение поля activity элемента, приехавшего по сети
@@ -95,5 +96,9 @@ class MainActivity : AppCompatActivity(),
     override fun showContent(show: Boolean) {
         requestList.isVisible = show
         requestButton.isVisible = show
+    }
+
+    override fun onSelected(requestViewState: ActivityViewState) {//здесь bottomSheet
+        TODO("Not yet implemented")
     }
 }
