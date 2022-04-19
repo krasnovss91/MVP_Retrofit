@@ -6,38 +6,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-
     <ProgressBar
         android:id="@+id/progress"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/requestInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@+id/requestInfo"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/errorTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@+id/errorTitle"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/reload"
@@ -45,10 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/try_again"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/errorTitle" />
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/requestButton"
@@ -57,10 +41,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/request"
         android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/requestInfo" />
-
+        />
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -70,8 +51,6 @@
         android:orientation="vertical"
         android:visibility="gone"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="requestButton"
         tools:ignore="MissingClass,MissingConstraints" />
-
 
 </LinearLayout>
