@@ -46,6 +46,8 @@ class MainActivity : AppCompatActivity(),
         reloadButton = findViewById(R.id.reload)
 
 //во время запроса скрывать информацию о запросе и показывать спиннер
+
+        requestButton = findViewById(R.id.requestButton)
         requestButton.setOnClickListener {//ходить в сеть по нажатию этой кнопки
             presenter.load()
         }
