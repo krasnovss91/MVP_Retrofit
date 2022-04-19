@@ -47,7 +47,6 @@ class MainActivity : AppCompatActivity(),
 
 //во время запроса скрывать информацию о запросе и показывать спиннер
         requestButton.setOnClickListener {//ходить в сеть по нажатию этой кнопки
-
             presenter.load()
         }
 

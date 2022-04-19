@@ -19,7 +19,7 @@ class MainRepository : Contract.Repository {
         var i = 2
 
         if (i % 2 == 0) {
-            i++//этот счётчик нигде не используется
+            i+=1
             throw RuntimeException()
         }
 
