@@ -1,6 +1,7 @@
 package com.example.mvp_retrofit.view
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -65,14 +66,17 @@ class MainActivity : AppCompatActivity(),
    }
 
     override fun showProgress() {
+        Log.d("showProgress","Внутри show progress")
         progress.isVisible = true
     }
 
     override fun hideProgress() {
+        Log.d("hideProgress","Внутри hide progress")
         progress.isVisible = false
     }
 
     override fun showError() {
+        Log.d("showError","Внутри show error")
         showError(true)
     }
 
@@ -95,6 +99,7 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun showContent(show: Boolean) {
+        Log.d("showContent","Внутри show content")
         requestList.isVisible = show
         requestButton.isVisible = show
     }

@@ -1,5 +1,6 @@
 package com.example.mvp_retrofit.presenter
 
+import android.util.Log
 import com.example.mvp_retrofit.Contract
 import com.example.mvp_retrofit.entity.ActivityViewState
 import com.example.mvp_retrofit.repository.MainRepository
@@ -12,6 +13,7 @@ class MainPresenter(
 ) : Contract.Presenter {
 
     override fun load() {
+        Log.d("load","Внутри метода Load")
         try {
             view.hideContent()
             view.showProgress()
@@ -45,6 +47,7 @@ class MainPresenter(
 
     companion object {
         fun create(mainActivity: MainActivity, mainRepository: MainRepository):MainPresenter {
+            Log.d("create","внутри метода create")
            return MainPresenter(mainActivity, mainRepository)
         }
     }

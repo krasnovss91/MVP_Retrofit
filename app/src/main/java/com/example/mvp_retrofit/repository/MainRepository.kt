@@ -15,7 +15,7 @@ import kotlin.concurrent.thread
 
 class MainRepository : Contract.Repository {
     override fun load(): MutableList<Activity>? {//идём в сеть здесь. Ловим объекты и кладём в список
-
+        Log.d("load_1","внури метода load репозитория")
         var i = 2
 
         if (i % 2 == 0) {
