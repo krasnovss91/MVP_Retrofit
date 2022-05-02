@@ -5,6 +5,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -115,8 +116,10 @@ class MainActivity : AppCompatActivity(),
         requestInfo.isVisible = show
     }
 
-    override fun onSelected(requestViewState: ActivityViewState) {//здесь bottomSheet
-//        TODO("Not yet implemented")
+    override fun onSelected(requestViewState: ActivityViewState) {
+
+       Toast.makeText(applicationContext, requestViewState.activity + requestViewState.type + requestViewState.participants + requestViewState.price
+        + requestViewState.key + requestViewState.link + requestViewState.accessibility, Toast.LENGTH_LONG).show()
     }
 
     override fun onDeleted(requestViewState: ActivityViewState) {
