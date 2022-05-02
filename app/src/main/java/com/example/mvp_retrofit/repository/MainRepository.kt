@@ -14,35 +14,41 @@ import java.util.concurrent.TimeUnit
 import kotlin.concurrent.thread
 
 class MainRepository : Contract.Repository {
-    override fun load(): MutableList<Activity>? {//идём в сеть здесь. Ловим объекты и кладём в список
-        Log.d("load_1","внури метода load репозитория")
-        var i = 2
 
-        if (i % 2 == 0) {
-            i+=1
-            throw RuntimeException()
-        }
+    val activityList = mutableListOf<Activity>()
 
-        val activityList: MutableList<Activity>? = null
+    override fun load(
+        onSuccess: (lastActivity: Activity, List<Activity>?) -> Unit,
+        onError: (Throwable) -> Unit
+    ) {
         thread {
-            val getActivityCall = NetworkModule.api.getActivity()
+            try {
 
-            val response = getActivityCall.execute()
-            if (response.isSuccessful) {
-                val activity = response.body()!!
-                Log.d("ACTIVITY", activity.toString())
-                activityList?.add(activity)
-            } else {
-                val errorBody = response.errorBody()!!
-                Log.d("ACTIVITY", errorBody.toString())
+                val getActivityCall = NetworkModule.api.getActivity()
+
+                val response = getActivityCall.execute()
+
+                if (response.isSuccessful) {
+                    val activity = response.body()!!
+                    Log.d(TAG, activity.toString())
+                    activityList.add(activity)
+                    onSuccess(activity, activityList)
+                } else {
+                    val errorBody = response.errorBody()!!
+                    Log.d(TAG, errorBody.toString())
+                    throw RuntimeException(errorBody.toString())
+                }
+            } catch (t: Throwable) {
+                Log.d(TAG, "Произошла ошибка: $t")
+                onError(t)
             }
         }
-        return activityList
     }
 
-    override fun reload() {
-        load()
-    }
+    override fun reload(
+        onSuccess: (lastActivity: Activity, List<Activity>?) -> Unit,
+        onError: (Throwable) -> Unit
+    ) = load(onSuccess, onError)
 
     object NetworkModule {
         private val client = OkHttpClient().newBuilder()

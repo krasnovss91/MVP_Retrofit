@@ -19,6 +19,8 @@ interface Contract {
 
         fun setContent(content: List<ActivityViewState>?)
 
+        fun updateLastRequestInfo(info: String)
+
         fun showContent(show: Boolean)
 
         fun showError(show: Boolean)
@@ -32,8 +34,15 @@ interface Contract {
 
     interface Repository {
 
-        fun load(): MutableList<Activity>?//может случиться, что из сети ничего не прилетит
-        fun reload()
+        fun load(
+            onSuccess: (lastActivity: Activity, List<Activity>?) -> Unit,
+            onError: (Throwable) -> Unit
+        )
+
+        fun reload(
+            onSuccess: (lastActivity: Activity, List<Activity>?) -> Unit,
+            onError: (Throwable) -> Unit
+        )
 
     }
 }

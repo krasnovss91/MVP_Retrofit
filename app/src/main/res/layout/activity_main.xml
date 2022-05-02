@@ -11,6 +11,7 @@
         android:id="@+id/progress"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
         android:visibility="gone" />
 
     <TextView
@@ -18,14 +19,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@+id/requestInfo"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center_horizontal"
         android:visibility="gone" />
 
-    <TextView
-        android:id="@+id/errorTitle"
+    <Button
+        android:id="@+id/requestButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@+id/errorTitle"
-        android:visibility="gone" />
+        android:layout_marginTop="24dp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/request"
+        />
 
     <Button
         android:id="@+id/reload"
@@ -33,17 +38,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/try_again"
+        android:layout_gravity="center_horizontal"
         android:visibility="gone" />
 
-    <Button
-        android:id="@+id/requestButton"
+    <TextView
+        android:id="@+id/errorTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/request"
-        android:visibility="gone"
-        />
-
+        android:text="@string/error"
+        android:layout_gravity="center_horizontal"
+        android:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/requestList"
@@ -51,6 +55,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:visibility="gone"
+        android:layout_marginTop="34dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:ignore="MissingClass,MissingConstraints" />
 

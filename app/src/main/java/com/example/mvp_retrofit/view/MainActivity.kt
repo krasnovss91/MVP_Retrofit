@@ -17,6 +17,9 @@ import com.example.mvp_retrofit.repository.MainRepository
 import com.example.mvp_retrofit.view.adapter.OnRequestSelected
 import com.example.mvp_retrofit.view.adapter.RequestAdapter
 
+
+const val TAG = "PROJECT_RETROFIT"
+
 class MainActivity : AppCompatActivity(),
     Contract.View, OnRequestSelected {//activity не должно ничего знать о преобразованиях
 
@@ -37,14 +40,16 @@ class MainActivity : AppCompatActivity(),
         MainPresenter.create(this, repository)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {//дёргает методы presenter, все преобразования там
-        super.onCreate(savedInstanceState)//в сеть идут методы repository, которые вызывают методы presenter
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         SetUpViews()
 
         progress = findViewById(R.id.progress)
         errorTitle = findViewById(R.id.errorTitle)
         reloadButton = findViewById(R.id.reload)
+        requestInfo = findViewById(R.id.requestInfo)
 
 //во время запроса скрывать информацию о запросе и показывать спиннер
 
@@ -66,17 +71,17 @@ class MainActivity : AppCompatActivity(),
    }
 
     override fun showProgress() {
-        Log.d("showProgress","Внутри show progress")
+        Log.d(TAG,"Внутри show progress")
         progress.isVisible = true
     }
 
     override fun hideProgress() {
-        Log.d("hideProgress","Внутри hide progress")
+        Log.d(TAG,"Внутри hide progress")
         progress.isVisible = false
     }
 
     override fun showError() {
-        Log.d("showError","Внутри show error")
+        Log.d(TAG,"Внутри show error")
         showError(true)
     }
 
@@ -95,16 +100,22 @@ class MainActivity : AppCompatActivity(),
 
     override fun setContent(content: List<ActivityViewState>?) {
         showContent(true)
-        //adapter.setProducts(content)
+        Log.d(TAG,"Внутри setContent $content")
+        adapter.setRequests(content)
+    }
+
+    override fun updateLastRequestInfo(info: String) {
+        requestInfo.text = "Last activity: $info"
     }
 
     override fun showContent(show: Boolean) {
-        Log.d("showContent","Внутри show content")
+        Log.d(TAG,"Внутри show content")
         requestList.isVisible = show
         requestButton.isVisible = show
+        requestInfo.isVisible = show
     }
 
     override fun onSelected(requestViewState: ActivityViewState) {//здесь bottomSheet
-        TODO("Not yet implemented")
+//        TODO("Not yet implemented")
     }
 }
