@@ -21,17 +21,17 @@ import com.example.mvp_retrofit.view.adapter.RequestAdapter
 const val TAG = "PROJECT_RETROFIT"
 
 class MainActivity : AppCompatActivity(),
-    Contract.View, OnRequestSelected {//activity не должно ничего знать о преобразованиях
+    Contract.View, OnRequestSelected {
 
     private val adapter = RequestAdapter(this)
 
     lateinit var requestList: RecyclerView
-    lateinit var requestInfo: TextView//присваивать только значение поля activity элемента, приехавшего по сети
+    lateinit var requestInfo: TextView
     lateinit var progress: ProgressBar
     lateinit var errorTitle: TextView
     lateinit var reloadButton: Button
     lateinit var requestButton: Button
-//при нажатии на элемент списка открываем полную информацию с помощью bottomSheet
+
     private val repository by lazy {
        MainRepository.create()
     }
@@ -51,14 +51,13 @@ class MainActivity : AppCompatActivity(),
         reloadButton = findViewById(R.id.reload)
         requestInfo = findViewById(R.id.requestInfo)
 
-//во время запроса скрывать информацию о запросе и показывать спиннер
 
         requestButton = findViewById(R.id.requestButton)
-        requestButton.setOnClickListener {//ходить в сеть по нажатию этой кнопки
+        requestButton.setOnClickListener {
             presenter.load()
         }
 
-        reloadButton.setOnClickListener {//если произошла ошибка, показать эту кнопку
+        reloadButton.setOnClickListener {
             presenter.reload()
         }
     }

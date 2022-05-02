@@ -2,6 +2,8 @@ package com.example.mvp_retrofit.presenter
 
 import android.util.Log
 import com.example.mvp_retrofit.Contract
+import com.example.mvp_retrofit.arch.ui
+import com.example.mvp_retrofit.entity.Activity
 import com.example.mvp_retrofit.entity.ActivityViewState
 import com.example.mvp_retrofit.repository.MainRepository
 import com.example.mvp_retrofit.view.MainActivity

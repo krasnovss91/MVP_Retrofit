@@ -3,4 +3,6 @@
     <string name="try_again">Повторить</string>
     <string name="requset">Отправить запрос</string>
     <string name="request">Отправить запрос</string>
+    <string name="error">Произошла ошибка</string>
+    <string name="deleteRequestInfoButton">Удалить данные о запросе</string>
 </resources>

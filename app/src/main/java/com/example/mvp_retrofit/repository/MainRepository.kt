@@ -4,12 +4,12 @@ import android.util.Log
 import com.example.mvp_retrofit.Contract
 import com.example.mvp_retrofit.SimpleApi
 import com.example.mvp_retrofit.entity.Activity
+import com.example.mvp_retrofit.view.TAG
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
-import java.lang.RuntimeException
 import java.util.concurrent.TimeUnit
 import kotlin.concurrent.thread
 
