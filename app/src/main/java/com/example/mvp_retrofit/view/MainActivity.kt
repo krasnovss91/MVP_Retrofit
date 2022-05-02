@@ -14,6 +14,7 @@ import com.example.mvp_retrofit.R
 import com.example.mvp_retrofit.entity.ActivityViewState
 import com.example.mvp_retrofit.presenter.MainPresenter
 import com.example.mvp_retrofit.repository.MainRepository
+import com.example.mvp_retrofit.view.adapter.OnRequestDeleted
 import com.example.mvp_retrofit.view.adapter.OnRequestSelected
 import com.example.mvp_retrofit.view.adapter.RequestAdapter
 
@@ -21,9 +22,9 @@ import com.example.mvp_retrofit.view.adapter.RequestAdapter
 const val TAG = "PROJECT_RETROFIT"
 
 class MainActivity : AppCompatActivity(),
-    Contract.View, OnRequestSelected {
+    Contract.View, OnRequestSelected, OnRequestDeleted {
 
-    private val adapter = RequestAdapter(this)
+    private val adapter = RequestAdapter(this,this)
 
     lateinit var requestList: RecyclerView
     lateinit var requestInfo: TextView
@@ -116,5 +117,9 @@ class MainActivity : AppCompatActivity(),
 
     override fun onSelected(requestViewState: ActivityViewState) {//здесь bottomSheet
 //        TODO("Not yet implemented")
+    }
+
+    override fun onDeleted(requestViewState: ActivityViewState) {
+        presenter.onDelete(requestViewState)
     }
 }

@@ -12,7 +12,14 @@ interface OnRequestSelected {
     fun onSelected(requestViewState: ActivityViewState)
 }
 
-class RequestAdapter(private val listener: OnRequestSelected) : RecyclerView.Adapter<RequestAdapter.MyViewHolder>() {
+interface OnRequestDeleted {
+    fun onDeleted(requestViewState: ActivityViewState)
+}
+
+class RequestAdapter(
+    private val listener: OnRequestSelected,
+    private val deleteListener: OnRequestDeleted
+) : RecyclerView.Adapter<RequestAdapter.MyViewHolder>() {
 
     private var requestList = emptyList<ActivityViewState>()
 
@@ -30,6 +37,11 @@ class RequestAdapter(private val listener: OnRequestSelected) : RecyclerView.Ada
             itemView.setOnClickListener {
                 listener.onSelected(activityViewState)
             }
+
+            itemView.findViewById<View>(R.id.deleteRequestInfoButton).setOnClickListener {
+                deleteListener.onDeleted(activityViewState)
+            }
+
         }
     }
 

@@ -30,6 +30,7 @@ interface Contract {
     interface Presenter {
         fun load()
         fun reload()
+        fun onDelete(activityViewState: ActivityViewState)
     }
 
     interface Repository {
@@ -44,5 +45,6 @@ interface Contract {
             onError: (Throwable) -> Unit
         )
 
+        fun delete(activity: Activity)
     }
 }

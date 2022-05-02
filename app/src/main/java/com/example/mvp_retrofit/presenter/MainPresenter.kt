@@ -13,6 +13,18 @@ class MainPresenter(
     private val repository: Contract.Repository
 ) : Contract.Presenter {
 
+    private fun mapToActivity(activityViewState: ActivityViewState): Activity {
+        return Activity(
+            activityViewState.activity,
+            activityViewState.type,
+            activityViewState.participants,
+            activityViewState.price,
+            activityViewState.link,
+            activityViewState.key,
+            activityViewState.accessibility
+        )
+    }
+
     override fun load() {
         view.hideError()
         view.hideContent()
@@ -22,6 +34,11 @@ class MainPresenter(
 
     override fun reload() {
         load()
+    }
+
+    override fun onDelete(activityViewState: ActivityViewState) {
+        repository.delete(mapToActivity(activityViewState))
+        reload()
     }
 
     private fun onSuccess(lastActivity: Activity, activities: List<Activity>?) {

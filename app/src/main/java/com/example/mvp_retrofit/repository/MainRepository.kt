@@ -50,6 +50,10 @@ class MainRepository : Contract.Repository {
         onError: (Throwable) -> Unit
     ) = load(onSuccess, onError)
 
+    override fun delete(activity: Activity) {
+        activityList.remove(activity)
+    }
+
     object NetworkModule {
         private val client = OkHttpClient().newBuilder()
             .readTimeout(30000, TimeUnit.MILLISECONDS)
